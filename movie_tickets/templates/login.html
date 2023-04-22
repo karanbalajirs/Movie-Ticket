@@ -17,7 +17,9 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+  background-image:url('https://img.freepik.com/free-photo/cinema-seats-still-life_23-2148115823.jpg?w=1060&t=st=1682154511~exp=1682155111~hmac=1719a36b18ae11bbc4ce0d4307b96598177ddf7b1317d68229fcfae433afa2c8');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .background{
     width: 430px;
@@ -27,7 +29,7 @@ body{
     left: 50%;
     top: 50%;
 }
-.background .shape{
+/*.background .shape{
     height: 200px;
     width: 200px;
     position: absolute;
@@ -49,7 +51,7 @@ body{
     );
     right: -30px;
     bottom: -80px;
-}
+}*/
 form{
     height: 520px;
     width: 400px;
@@ -149,6 +151,7 @@ button{
         <input type="password" placeholder="Password" id="password" name="pass">
 
         <button type="submit">Log In</button>
+        
         <!-- <input type="button" value=""> -->
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
@@ -156,5 +159,6 @@ button{
         </div> -->
         <a href="{% url 'signup' %}" >Create a account</a>
     </form>
+    
 </body>
 </html>
