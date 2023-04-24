@@ -4,13 +4,19 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .models import *
 
 
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
-    return render(request,'home.html')
+    m = movies.objects.all()
+    '''if request.method=='POST':
+        return redirect('booking_page')'''
+    return render(request,'home.html',{'m':m})
 
+def booking_page(request,my_parameter):
+    return render(request,'booking.html',{'my_parameter':my_parameter})
 def signup(request):
     if request.method=='POST':
         username=request.POST['username']
@@ -55,5 +61,6 @@ def loginP(request):
 def logoutP(request):
     logout(request)
     return redirect('login')
+
 
 
