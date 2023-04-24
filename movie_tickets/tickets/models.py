@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class movies(models.Model):
     movies=models.BigAutoField(primary_key=True)
     name=models.CharField(max_length=50)
-    image=models.ImageField(upload_to="pics",default="default.png")
+    image=models.ImageField(upload_to='pics',default="default.png")
     date=models.DateField()
     duration=models.CharField(max_length=50)
     type=models.CharField(max_length=50)
@@ -42,3 +42,4 @@ class ticket(models.Model):
     name_of_customer = models.CharField(max_length=30)
     age = models.SmallIntegerField()
     no_of_seats = models.IntegerField()
+
