@@ -11,12 +11,7 @@ from .models import *
 @login_required(login_url='login')
 def home(request):
     m = movies.objects.all()
-    '''if request.method=='POST':
-        return redirect('booking_page')'''
     return render(request,'home.html',{'m':m})
-
-def booking_page(request,my_parameter):
-    return render(request,'booking.html',{'my_parameter':my_parameter})
 def signup(request):
     if request.method=='POST':
         username=request.POST['username']
