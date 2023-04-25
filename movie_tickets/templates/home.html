@@ -20,8 +20,12 @@
             display: grid;
         }
         .sub_container{
+<<<<<<< HEAD
             
             float:left;
+=======
+            float: left;
+>>>>>>> 5047a6fc9326b1df71f8787c3e0cff1afbb0a17a
             width: 30%;
             margin-left:40px;
             margin-top:10px;
@@ -139,8 +143,8 @@
     <div class="main_container">
         {% for movies in m %}
         <div class="sub_container">
-            <img src= "{{movies.image.url}}" style="width:50%; ">
-            <h4>{{movies.name}}</h4>            
+            <img src= "{{m.0.image.url}}" style="width:50%;">
+            <h4>{{m.name}}</h4>            
             <h5>Genre:{{movies.type}}</h5>
             <h5>Rating:{{movies.rating}}</h5>
             <a href="{{movies.trailer}}" target="_blank">Trailer</a><br>
