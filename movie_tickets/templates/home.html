@@ -21,11 +21,11 @@
         }
         .sub_container{
             
-            float: left;
+            float:left;
             width: 30%;
-            margin-left:10px;
-            margin-top:30px;
-            block-size: auto;
+            margin-left:40px;
+            margin-top:10px;
+            block-size:auto;
             padding:5px;
         }
         nav{
@@ -122,7 +122,7 @@
         }*/
     </style>
 </head>
-<body style="background-color: aqua;">
+<body style="background: rgb(221,239,245);background: linear-gradient(90deg, rgba(221,239,245,1) 0%, rgba(201,231,231,1) 10%, rgba(228,241,242,1) 20%, rgba(203,236,245,1) 30%, rgba(243,253,254,1) 40%, rgba(203,228,241,1) 50%, rgba(243,247,249,1) 60%, rgba(210,241,244,1) 70%, rgba(232,239,241,1) 80%, rgba(208,232,244,1) 90%, rgba(205,234,245,1) 100%);">
     {% csrf_token %}
     <nav class="container">
             <input type="checkbox" id="check">
@@ -143,7 +143,8 @@
             <h4>{{movies.name}}</h4>            
             <h5>Genre:{{movies.type}}</h5>
             <h5>Rating:{{movies.rating}}</h5>
-            <a href="{{movies.trailer}}" target="_blank">Trailer</a>
+            <a href="{{movies.trailer}}" target="_blank">Trailer</a><br>
+            <button type="button">Book now</button>
         </div>
         {% endfor %}
     </div>
