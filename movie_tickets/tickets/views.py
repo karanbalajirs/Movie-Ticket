@@ -12,6 +12,9 @@ from .models import *
 def home(request):
     m = movies.objects.all()
     return render(request,'home.html',{'m':m})
+def booking_page(request,movie):
+    movie=movies.objects.get(movie=movie)
+    return render(request,'booking.html',{'movie':movie})
 def signup(request):
     if request.method=='POST':
         username=request.POST['username']
