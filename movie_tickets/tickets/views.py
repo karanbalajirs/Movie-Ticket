@@ -11,6 +11,8 @@ from .models import *
 @login_required(login_url='login')
 def home(request):
     m = movies.objects.all()
+    if request.method=='POST':
+        return redirect(booking_page,movie=m.0.id)
     return render(request,'home.html',{'m':m})
 def booking_page(request,movie):
     movie=movies.objects.get(movie=movie)
