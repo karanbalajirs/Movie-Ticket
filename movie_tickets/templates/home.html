@@ -20,6 +20,8 @@
             display: grid;
         }
         .sub_container{
+            border-style: solid;
+            border-radius: 6%;
             text-align: center;
             float:left;
             width: 30%;
@@ -130,7 +132,7 @@
             <label class="logo">Welcome {{request.user.username}}</label>
             <ul>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="#">Movies</a></li>
+                
                 <li><a href="#">Theatre</a></li>
             </ul>
         </nav>
@@ -139,12 +141,12 @@
     <div class="main_container">
         {% for movies in m %}
         <div class="sub_container">
-            <img src= "{{movies.image.url}}" style="width:50%;width: 300px;height: 500px;object-fit: cover;">
-            <h4>{{movies.name}}</h4>            
+            <a href ="/prebooking/{{movies.movies}}/"><img src= "{{movies.image.url}}" style="width:50%;width: 300px;height: 500px;object-fit: cover;"></a>
+            <h4>{{movies.name}}</h4>       
             <h5>Genre:{{movies.type}}</h5>
             <h5>Rating:{{movies.rating}}</h5>
-            <a href="{{movies.trailer}}" target="_blank"><button>Trailer</button></a>
-            <form type="" method="post"><button type="submit">Book now</button></form>
+            <a href="{{movies.trailer}}" target="_blank">Trailer</a><br>
+           <!-- <a href ="/prebooking/{{movies.movies}}/"><button type="submit">Book now</button></a> -->
         </div>
         {% endfor %}
     </div>

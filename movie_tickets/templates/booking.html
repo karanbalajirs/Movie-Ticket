@@ -5,8 +5,146 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .main_container{
+           margin: 50px;
+           border:20px;
+        }
+        .img
+        {
+            padding-top: 30px;
+            width:50%;
+        }
+        .tab{
+            padding-top: 10px;
+            border-style:solid; 
+            width:48%;
+            margin-top: 130px;
+        }
+        nav{
+            background-color: black;
+            height: 80px;
+            width:100%;
+        }
+        label.logo{
+            color: white;
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 50px;
+        }
+        nav ul{
+            float: right;
+            margin-right: 20px;
+            gap: 50px;
+        }
+        nav ul li{
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+            list-style: none;
+            color: white;
+        }
+        nav ul li a{
+            font-size: 26px;
+            font-weight: 700;
+            font-family: 'Chivo Mono',monospace;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            padding: 10px;
+            transition: 0.5s ease;
+        }
+        nav ul:hover li a{
+            color: #30edf4;
+        }
+        nav ul:hover li a:not(:hover){
+            color: white;
+            opacity: 0.7;
+            filter: blur(1px);
+        }
+        .checkbtn{
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+        #check{
+            display: none;
+        }
+        @media (max-width:952px){
+            label.logo{
+                font-size: 30px;
+                padding-left: 50px;
+            }
+            nav ul li a{
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     
+    <nav class="container">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+        <!-- <label class="logo">Welcome {{request.user.username}}</label> -->
+        <ul>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="#">Theatre</a></li>
+        </ul>
+    </nav>
+    <div class="main_container">
+    <div class="img">
+        <img src="{{movie.image.url}}" style="width:50%;width: 300px;height: 500px;object-fit: cover; margin-left: auto; margin-right: auto;display: block;">
+    </div>
+    <div class="tab">
+    <table align="center" cellpadding="15px" cellspacing="15px" style="font-size:larger; " >
+        <tr>
+            <th>Movie TYPE :</th> <td>{{movie.type}}</td>
+        </tr>
+        <tr>
+            <th>Released Date :</th> <td>{{movie.date}}</td>
+        </tr>
+        <tr>
+            <th>Movie Language :</th> <td>{{movie.language}}</td>
+        </tr>
+        <tr>
+            <th>Rating :</th> <td>{{movie.rating}}</td>
+        </tr>
+        <tr>
+            <th>Movie Runtime :</th> <td>{{movie.duration}}</td>
+        </tr>
+        <tr>
+            <th>Lead CAST :</th> <td>{{movie.cast}}</td>
+        </tr>
+        <tr>
+            <th>Ticket PRICE:</th> <th>₹ {{movie.price}}</th>
+        </tr>
+        <tr>
+            <th>Movie Trailer :</th> <td><a href="{{movie.trailer}}">Click Here to Watch Trailer now</a></td>
+        </tr>
+            </table>
+    </div></div>
+    <br>
+    {% csrf_token %}
+
+    <div class="main_main_container">
+            {% for s in show %}
+            <div class="sub_container">
+                <h4>{{s.theatre.name}}</h4>       
+                <h5>{{s.movies.name}}</h5>
+                <h5>{{s.show_time}}</h5>
+            </div>
+            {% endfor %}
+    </div>
+    
+
 </body>
-</html>m
+</html>

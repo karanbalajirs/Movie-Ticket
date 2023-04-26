@@ -23,7 +23,8 @@ class theatre(models.Model):
     
 
 class screen(models.Model):
-    screen = models.IntegerField()
+    
+    name=models.CharField(max_length=50,default='main')
     theatre = models.ForeignKey(theatre,on_delete=models.CASCADE)
     type = models.CharField(max_length=50)
     no_of_total_seats = models.IntegerField()
@@ -36,6 +37,7 @@ class shows(models.Model):
     show_time = models.TimeField()
     show_date = models.DateField()
     no_of_free_seats = models.IntegerField()
+    price=models.IntegerField(default=150)
 
 class ticket(models.Model):
     shows = models.ForeignKey(shows,on_delete= models.CASCADE)

@@ -11,12 +11,12 @@ from .models import *
 @login_required(login_url='login')
 def home(request):
     m = movies.objects.all()
-    if request.method=='POST':
-        return redirect(booking_page,movie=m.0.id)
     return render(request,'home.html',{'m':m})
-def booking_page(request,movie):
-    movie=movies.objects.get(movie=movie)
-    return render(request,'booking.html',{'movie':movie})
+def booking_page(request,id):
+    movie=movies.objects.get(movies=id)
+    show=shows.objects.filter(movies=id)
+    return render(request,'booking.html',context={'movie':movie,'show':show})
+    
 def signup(request):
     if request.method=='POST':
         username=request.POST['username']
