@@ -29,8 +29,10 @@ urlpatterns = [
     path("book/<int:id>/",views.book,name="book"),
     path("book/<pk>",views.book,name="book1"),
     path("ticket/",views.ticket,name="ticket"),
+    path("booked/",views.booked,name='booked'),
 ]
 
 
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
+    <style>
+        
+    </style>
 </head>
 <body>
     
-    <h2>Movie Name : {{show.movies.name}}</h2>
-    <h2>Theatre : {{show.theatre.name}}</h2>
-    <h2>Screen : {{show.screen.name}}</h2>
-    <h2>Location : {{show.theatre.location}}</h2>
-    <h2>Show Date : {{show.show_date}}</h2>
-    <h2>Show Time : {{show.show_time}}</h2>
-    <h2>Available Seats:{{show.no_of_free_seats}}</h2>
+    <h3>Movie Name : {{show.movies.name}}</h3>
+    <h3>Theatre : {{show.theatre.name}}</h3>
+    <h3 style="text-transform: capitalize;">Screen : {{show.screen.name}}</h3>
+    <h3>Location : {{show.theatre.location}}</h3>
+    <h3>Show Date : {{show.show_date}}</h3>
+    <h3>Show Time : {{show.show_time}}</h3>
+    <h3>Available Seats:{{show.no_of_free_seats}}</h3>
     {% csrf_token %}
     <form action="" method="post">
          

@@ -32,7 +32,7 @@ def book(request,id):
         show.no_of_free_seats -= no_of_seats
         show.save()
         ticket.save()
-        return redirect('home')
+        return redirect('booked')
     print(show.movies.name)
     return render(request,'book.html',{'show':show})
 def ticket(request):
@@ -79,6 +79,8 @@ def loginP(request):
             messages.error(request,"Bad Credentials")
             return redirect('home')
     return render(request,'login.html')
+def booked(request):
+    return render(request,'booked.html')
 def logoutP(request):
     logout(request)
     return redirect('login')

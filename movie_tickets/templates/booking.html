@@ -8,34 +8,41 @@
     <style>
         *{
             margin:0;
-            padding: 0;
+            
         }
         .main_container{
            margin: 50px;
            border:20px;
            align-items: center;
+           display: flex;
         }
         .main_main_container{
-           margin: 50px;
+           margin: 30px;
            border:20px;
-           align-items: center;
         }
         .sub_container{
             border-style: solid;
-            border-radius: 6%;
-            padding: 10px;
-            margin: 30px;
+            border-radius: 10%;
+            padding: 5px;
+            margin: 10px;
+            width: 22%;
+            height: 350px;
+            float: left;
+            object-fit: cover;
             text-align: center;
-            width:auto;
         }   
         .img
         {
             padding-top: 30px;
+            width: 40%;
+            float:left;
         }
         .tab{
+            float: right;
+            width: 40%;
             padding-top: 10px;
             border-style:solid; 
-            margin-top: 130px;
+            margin-top: 20px;
         }
         nav{
             background-color: black;
@@ -90,15 +97,6 @@
         #check{
             display: none;
         }
-        @media (max-width:952px){
-            label.logo{
-                font-size: 30px;
-                padding-left: 50px;
-            }
-            nav ul li a{
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -109,7 +107,7 @@
         <!-- <label class="logo">Welcome {{request.user.username}}</label> -->
         <ul>
             <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a href="#">Theatre</a></li>
+            <li><a href="{% url 'ticket' %}">Tickets</a></li>
         </ul>
     </nav>
     <div class="main_container">
@@ -144,18 +142,16 @@
         </tr>
             </table>
     </div></div>
-    <br>
     {% csrf_token %}
-
     <div class="main_main_container">
             {% for s in show %}
-            <div class="sub_container"></div>
-            <table align="center" cellpadding="10px" cellspacing="10px" style="font-size:larger; " >
+            <div class="sub_container">
+            <table align="center" cellpadding="8px" cellspacing="8px" style="font-size:medium; font-weight: 100;" >
                 <tr>
                     <th>Theatre Name :</th> <td>{{s.theatre.name}}</td>
                 </tr>
                 <tr>
-                    <th>Theatre Location :</th> <td>{{s.theatre.location}}</td>
+                    <th>Theatre Location:</th> <td>{{s.theatre.location}}</td>
                 </tr>
                 <tr>
                     <th>Screen Name :</th> <td style="text-transform: capitalize;">{{s.screen.name}}</td>
@@ -167,14 +163,12 @@
                     <th>Show Time :</th> <td>{{s.show_time}}</td>
                 </tr>
                 <tr>
-                    <th>Show Price :</th> <td>{{s.show_price}}</td>
+                    <th>Show Price :</th> <td>{{s.price}}</td>
                 </tr>
                     </table>
-                <a href="http://127.0.0.1:8000/book/{{s.id}}/" ><button>Book Now</button></a>
-            </div>
+                <a href="http://127.0.0.1:8000/book/{{s.id}}/"><button>Book Now</button></a>
+                </div>
             {% endfor %}
     </div>
-    
-
 </body>
 </html>
