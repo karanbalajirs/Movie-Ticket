@@ -15,6 +15,19 @@
            border:20px;
            align-items: center;
         }
+        .main_main_container{
+           margin: 50px;
+           border:20px;
+           align-items: center;
+        }
+        .sub_container{
+            border-style: solid;
+            border-radius: 6%;
+            padding: 10px;
+            margin: 30px;
+            text-align: center;
+            width:auto;
+        }   
         .img
         {
             padding-top: 30px;
@@ -136,13 +149,27 @@
 
     <div class="main_main_container">
             {% for s in show %}
-            <div class="sub_container " style="border-style: solid;">
-                <h4>{{s.theatre.name}}</h4>       
-                <h4>{{s.movies.name}}</h4>
-                <h4>{{s.show_time}}</h4>
-                <h4>{{s.show_date}}</h4>
-                <h4>{{s.price}}</h4>
-                <h4>{{s.id}}</h4>
+            <div class="sub_container"></div>
+            <table align="center" cellpadding="10px" cellspacing="10px" style="font-size:larger; " >
+                <tr>
+                    <th>Theatre Name :</th> <td>{{s.theatre.name}}</td>
+                </tr>
+                <tr>
+                    <th>Theatre Location :</th> <td>{{s.theatre.location}}</td>
+                </tr>
+                <tr>
+                    <th>Screen Name :</th> <td style="text-transform: capitalize;">{{s.screen.name}}</td>
+                </tr>
+                <tr>
+                    <th>Show Date :</th> <td>{{s.show_date}}</td>
+                </tr>
+                <tr>
+                    <th>Show Time :</th> <td>{{s.show_time}}</td>
+                </tr>
+                <tr>
+                    <th>Show Price :</th> <td>{{s.show_price}}</td>
+                </tr>
+                    </table>
                 <a href="http://127.0.0.1:8000/book/{{s.id}}/" ><button>Book Now</button></a>
             </div>
             {% endfor %}
