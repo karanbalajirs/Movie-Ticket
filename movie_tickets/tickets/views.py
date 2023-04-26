@@ -17,6 +17,27 @@ def booking_page(request,id):
     show=shows.objects.filter(movies=id)
     return render(request,'booking.html',context={'movie':movie,'show':show})
     
+def book(request,id):
+    show=shows.objects.get(id=id)
+    if request.method=='POST':
+        name=request.POST['Name']
+        no_of_seats= request.POST['NoOfSeats']
+        no_of_seats=int(no_of_seats)
+        age1=request.POST['Age']
+        age1=int(age1)
+        print(name,no_of_seats,age1,request.user)
+        if(int(no_of_seats) > show.no_of_free_seats):
+            return HttpResponse("Number of selected seats is not available")
+        ticket = ticket1.objects.create(userid=request.user,shows=show,name_of_customer=name,age=age1,no_of_seats=no_of_seats)
+        show.no_of_free_seats -= no_of_seats
+        show.save()
+        ticket.save()
+        return redirect('home')
+    print(show.movies.name)
+    return render(request,'book.html',{'show':show})
+def ticket(request):
+    ticket=ticket1.objects.filter(userid=request.user)
+    return render(request,"ticket.html",{'ticket':ticket})
 def signup(request):
     if request.method=='POST':
         username=request.POST['username']

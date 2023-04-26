@@ -39,7 +39,8 @@ class shows(models.Model):
     no_of_free_seats = models.IntegerField()
     price=models.IntegerField(default=150)
 
-class ticket(models.Model):
+class ticket1(models.Model):
+    userid = models.ForeignKey(User,related_name='Customer',on_delete= models.CASCADE)
     shows = models.ForeignKey(shows,on_delete= models.CASCADE)
     name_of_customer = models.CharField(max_length=30)
     age = models.SmallIntegerField()

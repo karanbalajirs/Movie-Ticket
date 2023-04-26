@@ -25,7 +25,10 @@ urlpatterns = [
     path("signup/",views.signup,name='signup'),
     path("login/",views.loginP,name='login'),
     path("logout/",views.logoutP,name='logout'),
-    path("prebooking/<int:id>/",views.booking_page,name='prebooking')
+    path("prebooking/<int:id>/",views.booking_page,name='prebooking'),
+    path("book/<int:id>/",views.book,name="book"),
+    path("book/<pk>",views.book,name="book1"),
+    path("ticket/",views.ticket,name="ticket"),
 ]
 
 

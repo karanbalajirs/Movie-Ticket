@@ -132,8 +132,7 @@
             <label class="logo">Welcome {{request.user.username}}</label>
             <ul>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
-                
-                <li><a href="#">Theatre</a></li>
+                <li><a href="{% url 'ticket' %}">Tickets</a></li>
             </ul>
         </nav>
     

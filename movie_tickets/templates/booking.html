@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking</title>
+    <title>Details</title>
     <style>
         *{
             margin:0;
@@ -13,16 +13,15 @@
         .main_container{
            margin: 50px;
            border:20px;
+           align-items: center;
         }
         .img
         {
             padding-top: 30px;
-            width:50%;
         }
         .tab{
             padding-top: 10px;
             border-style:solid; 
-            width:48%;
             margin-top: 130px;
         }
         nav{
@@ -125,7 +124,7 @@
             <th>Lead CAST :</th> <td>{{movie.cast}}</td>
         </tr>
         <tr>
-            <th>Ticket PRICE:</th> <th>₹ {{movie.price}}</th>
+            <th>Lowest PRICE:</th> <th>₹ {{movie.price}}</th>
         </tr>
         <tr>
             <th>Movie Trailer :</th> <td><a href="{{movie.trailer}}">Click Here to Watch Trailer now</a></td>
@@ -137,10 +136,14 @@
 
     <div class="main_main_container">
             {% for s in show %}
-            <div class="sub_container">
+            <div class="sub_container " style="border-style: solid;">
                 <h4>{{s.theatre.name}}</h4>       
-                <h5>{{s.movies.name}}</h5>
-                <h5>{{s.show_time}}</h5>
+                <h4>{{s.movies.name}}</h4>
+                <h4>{{s.show_time}}</h4>
+                <h4>{{s.show_date}}</h4>
+                <h4>{{s.price}}</h4>
+                <h4>{{s.id}}</h4>
+                <a href="http://127.0.0.1:8000/book/{{s.id}}/" ><button>Book Now</button></a>
             </div>
             {% endfor %}
     </div>
