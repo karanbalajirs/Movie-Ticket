@@ -20,6 +20,7 @@
             display: grid;
         }
         .sub_container{
+            background-color: rgba(134, 134, 134, 0.201);
             border-style: solid;
             border-radius: 6%;
             text-align: center;
@@ -29,16 +30,22 @@
             margin-top:10px;
             block-size:auto;
             padding:5px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
         }
         nav{
-            background-color: black;
-            height: 80px;
+            background-color: rgba(134, 134, 134, 0.336);
+            height: 60px;
             width:100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            
         }
         label.logo{
             color: white;
             font-size: 25px;
-            line-height: 80px;
+            line-height: 60px;
             padding: 0 50px;
         }
         nav ul{
@@ -48,7 +55,7 @@
         }
         nav ul li{
             display: inline-block;
-            line-height: 80px;
+            line-height: 60px;
             margin: 0 5px;
             list-style: none;
             color: white;
@@ -124,7 +131,7 @@
         }*/
     </style>
 </head>
-<body style="background: rgb(221,239,245);background: linear-gradient(90deg, rgba(221,239,245,1) 0%, rgba(201,231,231,1) 10%, rgba(228,241,242,1) 20%, rgba(203,236,245,1) 30%, rgba(243,253,254,1) 40%, rgba(203,228,241,1) 50%, rgba(243,247,249,1) 60%, rgba(210,241,244,1) 70%, rgba(232,239,241,1) 80%, rgba(208,232,244,1) 90%, rgba(205,234,245,1) 100%);">
+<body style="background: black"> <!--rgb(221,239,245);background: linear-gradient(90deg, rgba(221,239,245,1) 0%, rgba(201,231,231,1) 10%, rgba(228,241,242,1) 20%, rgba(203,236,245,1) 30%, rgba(243,253,254,1) 40%, rgba(203,228,241,1) 50%, rgba(243,247,249,1) 60%, rgba(210,241,244,1) 70%, rgba(232,239,241,1) 80%, rgba(208,232,244,1) 90%, rgba(205,234,245,1) 100%);"-->
     {% csrf_token %}
     <nav class="container">
             <input type="checkbox" id="check">
@@ -141,9 +148,9 @@
         {% for movies in m %}
         <div class="sub_container">
             <a href ="/prebooking/{{movies.movies}}/"><img src= "{{movies.image.url}}" style="width:50%;width: 300px;height: 500px;object-fit: cover;"></a>
-            <h4>{{movies.name}}</h4>       
-            <h5>Genre:{{movies.type}}</h5>
-            <h5>Rating:{{movies.rating}}</h5>
+            <h3 style="color: rgb(255, 255, 255);">{{movies.name}}</h3>       
+            <h5 style="color:rgb(138, 134, 134)">Genre:{{movies.type}}</h5>
+            <h5 style="color:rgb(138, 134, 134)">Rating:{{movies.rating}}</h5>
             <a href="{{movies.trailer}}" target="_blank">Trailer</a><br>
            <!-- <a href ="/prebooking/{{movies.movies}}/"><button type="submit">Book now</button></a> -->
         </div>

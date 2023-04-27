@@ -8,19 +8,20 @@
     <style>
         *{
             margin:0;
-            
         }
         .main_container{
            margin: 50px;
            border:20px;
            align-items: center;
            display:flex;
+           justify-content: space-evenly;
         }
         .main_main_container{
            margin: 30px;
            border:20px;
         }
         .sub_container{
+            background-color: rgba(134, 134, 134, 0.201);
             border-style: solid;
             border-radius: 10%;
             padding: 5px;
@@ -30,6 +31,9 @@
             float: left;
             object-fit: cover;
             text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
         }   
         .img
         {
@@ -41,18 +45,20 @@
             float: right;
             width: 40%;
             padding-top: 10px;
-            border-style:solid; 
+            border-style:solid;
+            border-radius: 15px;
+            border-color :rgb(96, 96, 96); 
             margin-top: 20px;
         }
         nav{
-            background-color: black;
-            height: 80px;
+            background-color :rgba(134, 134, 134, 0.201);
+            height: 60px;
             width:100%;
         }
         label.logo{
             color: white;
             font-size: 25px;
-            line-height: 80px;
+            line-height: 60px;
             padding: 0 50px;
         }
         nav ul{
@@ -62,7 +68,7 @@
         }
         nav ul li{
             display: inline-block;
-            line-height: 80px;
+            line-height: 60px;
             margin: 0 5px;
             list-style: none;
             color: white;
@@ -107,7 +113,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: black;">
     
     <nav class="container">
         <input type="checkbox" id="check">
@@ -120,10 +126,10 @@
     </nav>
     <div class="main_container">
     <div class="img">
-        <img src="{{movie.image.url}}" style="width:50%;width: 300px;height: 500px;object-fit: cover; margin-left: auto; margin-right: auto;display: block;">
+        <img src="{{movie.image.url}}" style=" width: 450px;height: 700px;object-fit: cover; margin-left: auto; margin-right: auto;display: block;">
     </div>
     <div class="tab">
-    <table align="center" cellpadding="15px" cellspacing="15px" style="font-size:larger; " >
+    <table cellpadding="15px" cellspacing="15px" style="font-size:larger; color: white; text-align: left;" >
         <tr>
             <th>Movie TYPE :</th> <td>{{movie.type}}</td>
         </tr>
@@ -131,19 +137,19 @@
             <th>Released Date :</th> <td>{{movie.date}}</td>
         </tr>
         <tr>
-            <th>Movie Language :</th> <td>{{movie.language}}</td>
+            <th>Language:</th> <td>{{movie.language}}</td>
         </tr>
         <tr>
             <th>Rating :</th> <td>{{movie.rating}}</td>
         </tr>
         <tr>
-            <th>Movie Runtime :</th> <td>{{movie.duration}}</td>
+            <th>Duration:</th> <td>{{movie.duration}}</td>
         </tr>
         <tr>
             <th>Lead CAST :</th> <td>{{movie.cast}}</td>
         </tr>
         <tr>
-            <th>Lowest PRICE:</th> <th>₹ {{movie.price}}</th>
+            <th>Lowest PRICE:</th> <th>₹{{movie.price}}</th>
         </tr>
         <tr>
             <th>Movie Trailer :</th> <td><a href="{{movie.trailer}}">Click Here to Watch Trailer now</a></td>
@@ -155,9 +161,9 @@
     <div class="main_main_container">
             {% for s in show %}
             <div class="sub_container">
-            <table align="center" cellpadding="8px" cellspacing="8px" style="font-size:medium; font-weight: 100;" >
+            <table cellpadding="8px" cellspacing="8px" style="font-size:medium; font-weight: 100; color: white; text-align: left;" >
                 <tr>
-                    <th>Theatre Name :</th> <td>{{s.theatre.name}}</td>
+                    <th>Theatre Name :</th><td>{{s.theatre.name}}</td>
                 </tr>
                 <tr>
                     <th>Theatre Location:</th> <td>{{s.theatre.location}}</td>
@@ -172,7 +178,7 @@
                     <th>Show Time :</th> <td>{{s.show_time}}</td>
                 </tr>
                 <tr>
-                    <th>Show Price :</th> <td>{{s.price}}</td>
+                    <th>Show Price :</th> <td>₹{{s.price}}</td>
                 </tr>
                     </table>
                 <a href="http://127.0.0.1:8000/book/{{s.id}}/"><button class="btn1" >Book Now</button></a>

@@ -7,19 +7,29 @@
     <title>Booking</title>
     <style>
         .main_container{
-            margin-top: 10%;
+            background-color: rgba(134, 134, 134, 0.201);
+            color: white;
+            border-radius: 50px;
+            height: 500px;
+            margin: 30px;
+            margin-top: 8%;
             display: flex;
             align-items: center;
-            justify-content:space-evenly;
+            justify-content:space-around;
             flex-wrap: wrap;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
         }
         .forms_forms{
+            
             font-size: 30px;
             display: flex;
             flex-direction: column;
         }
         label{
             margin-bottom: 10px;
+            color: white;
         }
         input{
             margin-bottom: 10px;
@@ -28,6 +38,10 @@
             border: 1px black;
             border-radius: 5px;
             border-style: solid;
+            background-color: rgba(134, 134, 134, 0.201);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
         }
         button{
             margin-bottom: 10px;
@@ -44,7 +58,7 @@
         }*/
     </style>
 </head>
-<body>
+<body style="background-color: black;">
     <div class="main_container">
         <div class="details">
     <h2>Movie Name : {{show.movies.name}}</h2>
