@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets</title>
     <style>
+        .main_container{
+            display:flex;
+            margin: 30px;
+            border: 20px;
+        }
         .container{
             border-style: solid;
             float: left;
@@ -19,10 +24,11 @@
     <h1 style="text-align: center;">Tickets</h1>
     {% for i in ticket %}
     <div class="container"> 
-        <h2 style="text-align: center;text-transform: capitalize;">{{i.name_of_customer}}</h2>
+        <h2 style="text-align: center;text-transform: capitalize;">{{i.shows.movies.name}}</h2>
+        <img src="{{i.shows.movies.image.url}}" style="width:100px; height: 150px; object-fit: cover; display: block;margin-left: auto; margin-right: auto;">
         <table align="center" cellpadding="10px" cellspacing="10px" style="font-size:larger; " >
             <tr>
-                <th>Movie Name :</th> <td>{{i.shows.movies.name}}</td>
+                <th>Customer Name :</th> <td style="text-transform: capitalize;">{{i.name_of_customer}}</td>
             </tr>
             <tr>
                 <th>Theatre Name :</th> <td>{{i.shows.theatre.name}}</td>

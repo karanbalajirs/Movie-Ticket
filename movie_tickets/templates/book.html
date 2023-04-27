@@ -6,26 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
     <style>
-        
+        .main_container{
+            margin-top: 10%;
+            display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            flex-wrap: wrap;
+        }
+        .forms_forms{
+            font-size: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        label{
+            margin-bottom: 10px;
+        }
+        input{
+            margin-bottom: 10px;
+            height: 30px;
+            text-indent: 5px;
+            border: 1px black;
+            border-radius: 5px;
+            border-style: solid;
+        }
+        button{
+            margin-bottom: 10px;
+            height: 30px;
+            text-indent: 5px;
+            border: 1px black;
+            border-radius: 5px;
+            border-style: solid;
+            text-align: center;
+            cursor: pointer;
+        }
+        /*.forms{
+            margin-left: 20%;
+        }*/
     </style>
 </head>
 <body>
-    
-    <h3>Movie Name : {{show.movies.name}}</h3>
-    <h3>Theatre : {{show.theatre.name}}</h3>
-    <h3 style="text-transform: capitalize;">Screen : {{show.screen.name}}</h3>
-    <h3>Location : {{show.theatre.location}}</h3>
-    <h3>Show Date : {{show.show_date}}</h3>
-    <h3>Show Time : {{show.show_time}}</h3>
-    <h3>Available Seats:{{show.no_of_free_seats}}</h3>
-    {% csrf_token %}
-    <form action="" method="post">
+    <div class="main_container">
+        <div class="details">
+    <h2>Movie Name : {{show.movies.name}}</h2>
+    <h2>Theatre : {{show.theatre.name}}</h2>
+    <h2 style="text-transform: capitalize;">Screen : {{show.screen.name}}</h2>
+    <h2>Location : {{show.theatre.location}}</h2>
+    <h2>Show Date : {{show.show_date}}</h2>
+    <h2>Show Time : {{show.show_time}}</h2>
+    <h2>Available Seats:{{show.no_of_free_seats}}</h2>
+    </div>
+    <div class="forms">
+    <form action="" method="post" class="forms_forms">
          
         {%csrf_token%}
-        <label for="Name">Name</label>
+        <label for="Name">Name:</label>
         <input type="text" placeholder="Name" name="Name" id="Name">
 
-        <label for="NoOfSeats">Number of seats</label>
+        <label for="NoOfSeats">Number of seats:</label>
         <input type="number" placeholder="Number of Seats" name="NoOfSeats" id="NoOfSeats">
 
         <label for="Age">Age:</label>
@@ -33,5 +70,7 @@
         <button type="submit">Book</button>
     </form>
     <a href="http://127.0.0.1:8000/prebooking/{{show.movies.movies}}/" ><button>Back</button></a>
+    </div> 
+    </div>
 </body>
 </html>

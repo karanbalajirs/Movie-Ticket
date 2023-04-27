@@ -14,7 +14,7 @@
            margin: 50px;
            border:20px;
            align-items: center;
-           display: flex;
+           display:flex;
         }
         .main_main_container{
            margin: 30px;
@@ -97,6 +97,14 @@
         #check{
             display: none;
         }
+        .btn1{
+            cursor: pointer;
+            height: 30px;
+            text-align: center;
+            border: 1px black;
+            border-radius: 5px;
+            border-style: solid;
+        }
     </style>
 </head>
 <body>
@@ -142,6 +150,7 @@
         </tr>
             </table>
     </div></div>
+    <a href="{% url 'home' %}"><button style=" cursor:pointer; margin-left:43%; font-size: large; text-align: center; width: auto; height:30px; border-radius: 5px; border:1px black; border-style: solid;">Back To Home Page</button></a> 
     {% csrf_token %}
     <div class="main_main_container">
             {% for s in show %}
@@ -166,9 +175,11 @@
                     <th>Show Price :</th> <td>{{s.price}}</td>
                 </tr>
                     </table>
-                <a href="http://127.0.0.1:8000/book/{{s.id}}/"><button>Book Now</button></a>
+                <a href="http://127.0.0.1:8000/book/{{s.id}}/"><button class="btn1" >Book Now</button></a>
                 </div>
             {% endfor %}
     </div>
+    
+    
 </body>
 </html>
