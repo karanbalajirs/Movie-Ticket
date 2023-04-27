@@ -22,12 +22,14 @@
             margin: 10px;
             border-radius: 6%;
             color: white;
-
         }
     </style>
 </head>
 <body style="background-color: black;">
     <h1 style="text-align: center; color: white;">Tickets</h1>
+    {% if ticket|length == 0 %}
+    <h1 style="color: white;">No tickets found</h1>
+    {% endif %}
     {% for i in ticket %}
     <div class="container"> 
         <h2 style="text-align: center;text-transform: capitalize;">{{i.shows.movies.name}}</h2>
@@ -54,7 +56,9 @@
             <tr>
                 <th>Show Time :</th> <td>{{i.shows.show_time}}</td>
             </tr>
-                </table>
+        </table>
+        <a href="http://127.0.0.1:8000/confirmcancel/{{i.id}}/" ><button style="margin-left: auto;margin-right: auto;display: block;">Cancel Ticket</button></a>
+        <br>
     </div>
     {% endfor %}
 </body>

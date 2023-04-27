@@ -119,3 +119,10 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL= 'pics/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'pics')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'db0ae041e527c7'
+EMAIL_HOST_PASSWORD = 'f9d04b4e241e4a'
+EMAIL_PORT = '2525' 

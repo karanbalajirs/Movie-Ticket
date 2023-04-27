@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Ticket</title>
+</head>
+<body style="background-color: black;color:white;">
+    <h2 style="text-align: center;">Ticket Details</h2>
+    <img src="{{ticket.shows.movies.image.url}}" style="width:100px; height: 150px; object-fit: cover; display: block;margin-left: auto; margin-right: auto;">
+        <table align="center" cellpadding="10px" cellspacing="10px" style="font-size:larger; " >
+            <tr>
+                <th>Customer Name :</th> <td style="text-transform: capitalize;">{{ticket.name_of_customer}}</td>
+            </tr>
+            <tr>
+                <th>Theatre Name :</th> <td>{{ticket.shows.theatre.name}}</td>
+            </tr>
+            <tr>
+                <th>Theatre Location :</th> <td>{{ticket.shows.theatre.location}}</td>
+            </tr>
+            <tr>
+                <th>Screen Name :</th> <td style="text-transform: capitalize;">{{ticket.shows.screen.name}}</td>
+            </tr>
+            <tr>
+                <th>Seats Booked:</th> <td>{{ticket.no_of_seats}}</td>
+            </tr>
+            <tr>
+                <th>Show Date :</th> <td>{{ticket.shows.show_date}}</td>
+            </tr>
+            <tr>
+                <th>Show Time :</th> <td>{{ticket.shows.show_time}}</td>
+            </tr>
+        </table>
+        <h3 style="text-align: center;">Do you want to cancel your tickets?</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+        <button style="margin-left: auto;margin-right: auto;display: block;">Cancel Ticket</button></form>   
+    </body>
+</html>

@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.conf import settings
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -30,11 +32,33 @@ def book(request,id):
             return HttpResponse("Number of selected seats is not available")
         ticket = ticket1.objects.create(userid=request.user,shows=show,name_of_customer=name,age=age1,no_of_seats=no_of_seats)
         show.no_of_free_seats -= no_of_seats
+        subject="{a} movie ticket".format(a=show.movies.name)
+        message="Hi {nam} Here is your ticket infromation\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice:{price}".format(nam=name,movie=show.movies.name,theatre=show.theatre.name,theatrelocation=show.theatre.location,seatno=no_of_seats,price=(no_of_seats*show.price))
+        email_from=settings.EMAIL_HOST_USER
+        recipient_list=[request.user.email,]
+        send_mail(subject,message,email_from,recipient_list)
         show.save()
         ticket.save()
         return redirect('booked')
     print(show.movies.name)
     return render(request,'book.html',{'show':show})
+def cancel(request,id):
+    ticket=ticket1.objects.get(id=id)
+    show= shows.objects.get(id=ticket.shows.id)
+    if request.method == "POST":
+        subject="{a} ticket Cancellation".format(a=ticket.shows.movies.name)
+        message="Hi {nam} your ticket is Cancellation\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice:{price}".format(nam=ticket.name_of_customer,movie=ticket.shows.movies.name,theatre=ticket.shows.theatre.name,theatrelocation=ticket.shows.theatre.location,seatno=ticket.no_of_seats,price=(ticket.no_of_seats*ticket.shows.price))
+        email_from=settings.EMAIL_HOST_USER
+        recipient_list=[request.user.email,]
+        show.no_of_free_seats += ticket.no_of_seats
+        show.save()
+        send_mail(subject,message,email_from,recipient_list)
+        print(ticket.id)
+        ticket.delete()
+        return redirect('cancel1')
+    return render(request,"cancel.html",{'ticket':ticket})
+def cancel1(request):
+    return render(request,"cancel1.html")   
 def ticket(request):
     ticket=ticket1.objects.filter(userid=request.user)
     return render(request,"ticket.html",{'ticket':ticket})
