@@ -44,3 +44,5 @@ class ticket1(models.Model):
     age = models.SmallIntegerField()
     no_of_seats = models.IntegerField()
 
+class theatre1(models.Model):
+    name=models.CharField(max_length=50)
