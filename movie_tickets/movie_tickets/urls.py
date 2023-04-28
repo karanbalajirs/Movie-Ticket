@@ -32,6 +32,8 @@ urlpatterns = [
     path("booked/",views.booked,name='booked'),
     path("confirmcancel/<int:id>/",views.cancel,name='cancel'),
     path("cancel/",views.cancel1,name='cancelled'),
+    path("theatreedit/",views.theatreedit,name='theatreedit'),
+    path("theatre1/",views.theatrelist,name='theatrelist'),
 ]
 
 
