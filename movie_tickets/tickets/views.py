@@ -14,11 +14,23 @@ from django.core.mail import send_mail
 def home(request):
     m = movies.objects.all()
     return render(request,'home.html',{'m':m})
+
+def theatreedit(request):
+    if request.method=='POST':
+        name1=request.POST['Name']
+        locations= request.POST['Location']
+        the = theatre.objects.create(name=name1,location=locations)
+        the.save()
+        return redirect('theatrelist')
+    return render(request,'theatre.html')
+def theatrelist(request):
+    t = theatre1.objects.all()
+    return render(request,'theatre1.html',{'t':t})
 def booking_page(request,id):
     movie=movies.objects.get(movies=id)
     show=shows.objects.filter(movies=id)
     return render(request,'booking.html',context={'movie':movie,'show':show})
-    
+
 def book(request,id):
     show=shows.objects.get(id=id)
     if request.method=='POST':
