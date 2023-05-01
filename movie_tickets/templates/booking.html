@@ -51,7 +51,7 @@
             margin-top: 20px;
         }
         nav{
-            background-color :rgba(134, 134, 134, 0.201);
+            background-color :rgba(42, 65, 91, 0.868);
             height: 60px;
             width:100%;
         }
@@ -160,6 +160,9 @@ background-attachment: fixed;">
     </div></div>
     <a href="{% url 'home' %}"><button style=" cursor:pointer; margin-left:43%; font-size: large; text-align: center; width: auto; height:30px; border-radius: 5px; border:1px black; border-style: solid;">Back To Home Page</button></a> 
     {% csrf_token %}
+    {%  if show|length == 0 %}
+        <h3 style="color: white;text-align: center; margin-top: 100px;">No Shows Up here, Try Later.....</h3>
+    {% endif %}
     <div class="main_main_container">
             {% for s in show %}
             <div class="sub_container">
@@ -171,7 +174,7 @@ background-attachment: fixed;">
                     <th>Theatre Location:</th> <td>{{s.screen.theatre.location}}</td>
                 </tr>
                 <tr>
-                    <th>Screen Name :</th> <td style="text-transform: capitalize;">{{s.screen.name}}</td>
+                    <th>Screen Name :</th> <td style="text-transform: capitalize;">{{s.screen.name}} ({{s.screen.type}})</td>
                 </tr>
                 <tr>
                     <th>Show Date :</th> <td>{{s.show_date}}</td>

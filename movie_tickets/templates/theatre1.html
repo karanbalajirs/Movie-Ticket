@@ -10,6 +10,9 @@
 background-size:cover;
 background-attachment: fixed;color: white;text-align: center;">
     <h1>LIST OF THEATRES REGISTERED</h1>
+    {% if t|length == 0 %}
+    <h2>No Theatre Registered</h2>
+    {% endif %}
     <ol style="text-align: center;list-style-position: inside;font-size: 200%;">
     {% for i in t%}
     <li>{{i.name}}</li>
