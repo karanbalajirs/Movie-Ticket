@@ -81,25 +81,22 @@ def signup(request):
         pass1=request.POST['password1']
         pass2=request.POST['password2']
         if User.objects.filter(username=username):
-            messages.error(request,"Username Already Exist, Please try a new one")
-            return redirect('home')
+           return HttpResponse("Username Already Exist, Please try a new one")
         if User.objects.filter(email=email).exists():
-            messages.error(request,"Email already exist,Please try with a new email")
-            return redirect('home')
-        if not username.isalnum():
-            messages.error(request, "Username must be Alpha-Numeric!!")
-            return redirect('home')
+            return HttpResponse("Email already exist,Please try with a new email")
+            
+        if not pass1.isalnum():
+            return HttpResponse("Password must be Alpha-Numeric!!")
+            
         if len(username)>20:
-            messages.error(request, "Username must be under 20 charcters!!")
-            return redirect('home')
+            return HttpResponse("Username must be under 20 charcters!!")
+    
         if (pass1!=pass2):
             return HttpResponse("Both passwords are not the same!")
         
         myuser = User.objects.create_user(username, email, pass1)
         myuser.save()
         return redirect('login')
-        
-        
     return render(request, "signup.html")
 
 def loginP(request):
@@ -109,11 +106,10 @@ def loginP(request):
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
             login(request,user)
-            messages.error(request,"Hi {us}".format(us=user.username))
-            return redirect('home')
+            return HttpResponse("Hi {us}".format(us=user.username))
         else:
-            messages.error(request,"Bad Credentials")
-            return redirect('home')
+            return HttpResponse("Bad Credentials")
+            
     return render(request,'login.html')
 def booked(request):
     return render(request,'booked.html')
