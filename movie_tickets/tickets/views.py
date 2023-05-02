@@ -45,7 +45,7 @@ def book(request,id):
         ticket = ticket1.objects.create(userid=request.user,shows=show,name_of_customer=name,age=age1,no_of_seats=no_of_seats)
         show.no_of_free_seats -= no_of_seats
         subject="{a} movie ticket".format(a=show.movies.name)
-        message="Hi {nam} Here is your ticket infromation\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice:{price}".format(nam=name,movie=show.movies.name,theatre=show.screen.theatre.name,theatrelocation=show.screen.theatre.location,seatno=no_of_seats,price=(no_of_seats*show.price))
+        message="Hi {nam} Here is your ticket infromation\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice of one seat:{price}\n\nTotal:{price1}".format(nam=name,movie=show.movies.name,theatre=show.screen.theatre.name,theatrelocation=show.screen.theatre.location,seatno=no_of_seats,price=show.price,price1=(no_of_seats*show.price))
         email_from=settings.EMAIL_HOST_USER
         recipient_list=[request.user.email,]
         send_mail(subject,message,email_from,recipient_list)
@@ -59,7 +59,7 @@ def cancel(request,id):
     show= shows.objects.get(id=ticket.shows.id)
     if request.method == "POST":
         subject="{a} ticket Cancellation".format(a=ticket.shows.movies.name)
-        message="Hi {nam} your ticket is Cancellation\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice:{price}".format(nam=ticket.name_of_customer,movie=ticket.shows.movies.name,theatre=ticket.shows.screen.theatre.name,theatrelocation=ticket.shows.screen.theatre.location,seatno=ticket.no_of_seats,price=(ticket.no_of_seats*ticket.shows.price))
+        message="Hi {nam} your ticket is Cancelled\n\nMovie Name:{movie}\nTheatre:{theatre}\nTheatre Location:{theatrelocation}\nNumber of Seats:{seatno}\n\nPrice of one seat:{price1}\n\n Total :{price}".format(nam=ticket.name_of_customer,movie=ticket.shows.movies.name,theatre=ticket.shows.screen.theatre.name,theatrelocation=ticket.shows.screen.theatre.location,seatno=ticket.no_of_seats,price=(ticket.no_of_seats*ticket.shows.price),price1=ticket.shows.price)
         email_from=settings.EMAIL_HOST_USER
         recipient_list=[request.user.email,]
         show.no_of_free_seats += ticket.no_of_seats
@@ -106,7 +106,7 @@ def loginP(request):
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
             login(request,user)
-            return HttpResponse("Hi {us}".format(us=user.username))
+            return redirect('home')
         else:
             return HttpResponse("Bad Credentials")
             
