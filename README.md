@@ -17,6 +17,7 @@ A Django Based Project for Online Movie Ticket Booking.
 - My Tickets
 - Wide Range of Movies 
 - Easy Addition of Movies using Admin Page.
+- Cancel Tickets
 
 
 ## USAGE
